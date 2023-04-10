@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import { MaterialIcons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
+import DialogInput from 'react-native-dialog-input';
 import * as Print from 'expo-print';
 import Item from "./Item";
 import * as apis from '../apis/apis'
@@ -28,6 +29,8 @@ export default Slider = ({data,changeData,username,branchValue,time,date,names})
     const [currIndex,setCurrIndex] = useState(0)
     const [sent,setSent] = useState(false)
     const [loading,setLoading] = useState(false)
+    const [visible,setVisible] = useState(false)
+    const [favNote,setFavNote] = useState('')
 
     useEffect(() => {
         data.forEach(cat => {
@@ -55,7 +58,7 @@ export default Slider = ({data,changeData,username,branchValue,time,date,names})
         setCat(catData[newIndex])
     }
 
-    const reSubmit = async(msg) => {
+    const reSubmit = async(msg,favNote) => {
         Alert.alert(
           'اعادة ارسال',
           `${msg} هل تريد اعادة الارسال ؟`,
@@ -69,7 +72,7 @@ export default Slider = ({data,changeData,username,branchValue,time,date,names})
             {
               text: 'Confirm',
               onPress: () => {
-                return sendData()
+                return sendData(favNote)
               },
             },
           ],
@@ -77,14 +80,15 @@ export default Slider = ({data,changeData,username,branchValue,time,date,names})
         );
     }
 
-    async function sendData(){
+    async function sendData(favNote){
         const data = {
             username,
             branchValue,
             names,
             time,
             date,
-            allCatData
+            allCatData,
+            favourite:favNote
         }
         setLoading(true)
         const response = await apis.saveRate(data)
@@ -95,7 +99,7 @@ export default Slider = ({data,changeData,username,branchValue,time,date,names})
             alert('تم الارسال')
         }else{
             setLoading(false)
-            reSubmit(response.msg)
+            reSubmit(response.msg,favNote)
         }
     }
 
@@ -106,7 +110,8 @@ export default Slider = ({data,changeData,username,branchValue,time,date,names})
             names,
             time,
             date,
-            allCatData
+            allCatData,
+            favourite:favNote
         }
         const html = functions.createHTML(data)
         const print = async () => {
@@ -118,7 +123,8 @@ export default Slider = ({data,changeData,username,branchValue,time,date,names})
         await print()
     }
 
-    const submit = async() => {
+    const submit = async(favNote) => {
+        setVisible(false)
         Alert.alert(
           'ارسال',
           'هل تريد الارسال ؟',
@@ -132,7 +138,7 @@ export default Slider = ({data,changeData,username,branchValue,time,date,names})
             {
               text: 'Confirm',
               onPress: () => {
-                return sendData()
+                return sendData(favNote)
               },
             },
           ],
@@ -186,6 +192,17 @@ export default Slider = ({data,changeData,username,branchValue,time,date,names})
     return(
         <View style={styles.container}>
             <Loader loading={loading} />
+            <DialogInput isDialogVisible={visible}
+                title={"ملاحظة"}
+                message={"ما هو اكثر شي عجبك بالفرع"}
+                initValueTextInput ={favNote}
+                submitText={"ADD"}
+                submitInput={ (inputText) => {
+                setFavNote(inputText)
+                submit(inputText)
+                } }
+                closeDialog={ () => {setVisible(false)}}>
+            </DialogInput>
             <View style={styles.sliderContainer}>
                 <Category/>
             </View>
@@ -205,7 +222,7 @@ export default Slider = ({data,changeData,username,branchValue,time,date,names})
                         <>
                             {!sent?
                                 <TouchableOpacity
-                                    onPress={() => submit()}
+                                    onPress={() => setVisible(true)}
                                     style={{flex:1,flexDirection:'row',justifyContent:"center",alignItems:'center'}}
                                 >
                                     <Text style={{

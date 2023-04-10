@@ -57,7 +57,7 @@ export default function RateScreen({ navigation, route }) {
     setBranchValue(null)
     setDate(new Date())
     setDatePicker(false)
-    setTimePicker(new Date(Date.now()))
+    setTime(new Date(Date.now()))
     setTimePicker(false)
     setLocalNames({
       vistor:"",
@@ -138,6 +138,8 @@ export default function RateScreen({ navigation, route }) {
       setRateData([...fetcheddata.categories])
       setFetchedData({...fetcheddata})
     }
+    setDate(new Date())
+    setTime(new Date(Date.now()))
   }
 
   const showDatePicker = () => {

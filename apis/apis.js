@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = "http://192.168.90.190:3030/trainning"; // http://maltrans.abuodehbros.com:3030/trainning
+const baseURL = "http://localhost:3030/trainning"; 
 
 const getUser = async (username, password) => {
   let data = { username, password };

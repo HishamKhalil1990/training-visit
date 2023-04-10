@@ -9,16 +9,6 @@ const getTimeFormat = (time) => {
     return strTime;
 }
 
-const namesDiv = (names) => {
-    let divs = ""
-    names.forEach(name => {
-        divs += `<p class=MsoNormal align=center dir=LTR style='margin-bottom:0in;text-align:
-        center;line-height:normal'><span style='font-size:10.0pt;font-family:"Calibri Light",sans-serif;
-        color:black'>&nbsp;<span lang=AR-SA dir=RTL>${name.name}</span></span></p>`
-    })
-    return divs
-}
-
 const categoryHead = (category) => {
     return `<tr style='height:.2in'>
     <td width=28 nowrap style='width:21.3pt;border:solid windowtext 1.0pt;
@@ -34,20 +24,13 @@ const categoryHead = (category) => {
     center;line-height:normal;direction:rtl;unicode-bidi:embed'><b><span
     lang=AR-SA style='font-size:10.0pt;color:black'>${category}</span></b></p>
     </td>
-    <td width=96 style='width:1.0in;border-top:none;border-left:solid windowtext 1.0pt;
-    border-bottom:solid windowtext 1.0pt;border-right:none;background:#D6DCE4;
-    padding:0in 5.4pt 0in 5.4pt;height:.2in'>
-    <p class=MsoNormal align=center dir=RTL style='margin-bottom:0in;text-align:
-    center;line-height:normal;direction:rtl;unicode-bidi:embed'><b><span
-    lang=AR-SA style='font-size:10.0pt;color:black'>&#1575;&#1604;&#1593;&#1604;&#1575;&#1605;&#1577;
-    </span></b></p>
-    </td>
-    <td width=101 nowrap style='width:76.1pt;border-top:none;border-left:solid windowtext 1.0pt;
-    border-bottom:solid windowtext 1.0pt;border-right:none;background:#D6DCE4;
-    padding:0in 5.4pt 0in 5.4pt;height:.2in'>
-    <p class=MsoNormal align=center dir=RTL style='margin-bottom:0in;text-align:
-    center;line-height:normal;direction:rtl;unicode-bidi:embed'><b><span
-    lang=AR-SA style='font-size:10.0pt;color:black'>&#1575;&#1604;&#1578;&#1602;&#1610;&#1610;&#1605;</span></b></p>
+    <td width=197 nowrap colspan=2 valign=bottom style='width:148.1pt;border-top:
+    none;border-left:solid windowtext 1.0pt;border-bottom:solid windowtext 1.0pt;
+    border-right:none;padding:0in 5.4pt 0in 5.4pt;height:.2in'>
+    <p class=MsoNormal align=center dir=LTR style='margin-bottom:0in;text-align:
+    center;line-height:normal'><span style='font-size:10.0pt;font-family:"Calibri Light",sans-serif;
+    color:black'>&nbsp;</span><span lang=AR-JO dir=RTL style='font-size:10.0pt;
+    font-family:"Calibri Light",sans-serif;color:black'>&#1575;&#1604;&#1593;&#1604;&#1575;&#1605;&#1577;</span></p>
     </td>
     <td style='height:.2in;border:none' width=0 height=24></td>
     </tr>`
@@ -59,7 +42,7 @@ const categoryQuestion = (questionDetail) => {
     border-top:none;padding:0in 5.4pt 0in 5.4pt;height:.2in'>
     <p class=MsoNormal align=center dir=LTR style='margin-bottom:0in;text-align:
     center;line-height:normal'><b><span style='font-size:10.0pt;font-family:"Calibri Light",sans-serif;
-    color:black'>${questionDetail.id}</span></b></p>
+    color:black'>${questionDetail.id + 1}</span></b></p>
     </td>
     <td width=297 style='width:222.9pt;border-top:none;border-left:solid windowtext 1.0pt;
     border-bottom:solid windowtext 1.0pt;border-right:none;padding:0in 5.4pt 0in 5.4pt;
@@ -68,25 +51,19 @@ const categoryQuestion = (questionDetail) => {
     line-height:normal;direction:rtl;unicode-bidi:embed'><span lang=AR-SA
     style='font-size:10.0pt;font-family:"Calibri Light",sans-serif;color:black'>${questionDetail.question}</span></p>
     </td>
-    <td width=96 nowrap valign=bottom style='width:1.0in;border-top:none;
-    border-left:solid windowtext 1.0pt;border-bottom:solid windowtext 1.0pt;
+    <td width=197 nowrap colspan=2 valign=bottom style='width:148.1pt;border-top:
+    none;border-left:solid windowtext 1.0pt;border-bottom:solid windowtext 1.0pt;
     border-right:none;padding:0in 5.4pt 0in 5.4pt;height:.2in'>
     <p class=MsoNormal align=center dir=LTR style='margin-bottom:0in;text-align:
     center;line-height:normal'><span style='font-size:10.0pt;font-family:"Calibri Light",sans-serif;
-    color:black'>${questionDetail.score}</span></p>
-    </td>
-    <td width=101 nowrap valign=bottom style='width:76.1pt;border-top:none;
-    border-left:solid windowtext 1.0pt;border-bottom:solid windowtext 1.0pt;
-    border-right:none;padding:0in 5.4pt 0in 5.4pt;height:.2in'>
-    <p class=MsoNormal align=center dir=LTR style='margin-bottom:0in;text-align:
-    center;line-height:normal'><span lang=AR-SA dir=RTL style='font-size:10.0pt;
-    font-family:"Calibri Light",sans-serif;color:black'>${questionDetail.maxGrade}</span></p>
+    color:black'>&nbsp;</span><span lang=AR-JO dir=RTL style='font-size:10.0pt;
+    font-family:"Calibri Light",sans-serif;color:black'>${questionDetail.score}</span></p>
     </td>
     <td style='height:.2in;border:none' width=0 height=24></td>
     </tr>`
 }
 
-const categoryTotal = (questionTotal,questionTotalMax) => {
+const categoryTotal = (questionTotal) => {
     return`<tr style='height:.2in'>
     <td width=28 nowrap style='width:21.3pt;border:solid windowtext 1.0pt;
     background:#D6DCE4;padding:0in 5.4pt 0in 5.4pt;height:.2in'>
@@ -102,23 +79,19 @@ const categoryTotal = (questionTotal,questionTotalMax) => {
     lang=AR-SA style='font-size:10.0pt;font-family:"Calibri Light",sans-serif;
     color:black'>&#1575;&#1604;&#1605;&#1580;&#1605;&#1608;&#1593;</span></b></p>
     </td>
-    <td width=96 nowrap style='width:1.0in;border:solid windowtext 1.0pt;
-    border-right:none;background:#D6DCE4;padding:0in 5.4pt 0in 5.4pt;height:.2in'>
+    <td width=197 nowrap colspan=2 valign=bottom style='width:148.1pt;border-top:
+    none;border-left:solid windowtext 1.0pt;border-bottom:solid windowtext 1.0pt;
+    border-right:none;padding:0in 5.4pt 0in 5.4pt;height:.2in'>
     <p class=MsoNormal align=center dir=LTR style='margin-bottom:0in;text-align:
-    center;line-height:normal'><b><span style='font-size:10.0pt;font-family:"Calibri Light",sans-serif;
-    color:black'>${questionTotal}</span></b></p>
-    </td>
-    <td width=101 nowrap style='width:76.1pt;border:solid windowtext 1.0pt;
-    border-right:none;background:#D6DCE4;padding:0in 5.4pt 0in 5.4pt;height:.2in'>
-    <p class=MsoNormal align=center dir=LTR style='margin-bottom:0in;text-align:
-    center;line-height:normal'><span dir=LTR></span><b><span style='font-size:
-    10.0pt;font-family:"Calibri Light",sans-serif;color:black'><span dir=LTR></span>${questionTotalMax}</span></b></p>
+    center;line-height:normal'><span style='font-size:10.0pt;font-family:"Calibri Light",sans-serif;
+    color:black'>&nbsp;</span><span lang=AR-JO dir=RTL style='font-size:10.0pt;
+    font-family:"Calibri Light",sans-serif;color:black'>${questionTotal}</span></p>
     </td>
     <td style='height:.2in;border:none' width=0 height=24></td>
     </tr>`
 }
 
-const categoryNote = (note) => {
+const qustionNote = (note) => {
     return`<tr style='height:.2in'>
     <td width=523 nowrap colspan=4 style='width:392.3pt;border:solid windowtext 1.0pt;
     border-top:none;padding:0in 5.4pt 0in 5.4pt;height:.2in'>
@@ -132,30 +105,32 @@ const categoryNote = (note) => {
 
 const categoriesDiv = (categoriesDetails) => {
     let divs = ''
-    let total = 0
-    let maxTotal = 0
     categoriesDetails.forEach(category => {
         let detail = ""
         detail += categoryHead(category.name)
         category.questions.forEach((question,index) => {
-            if(index < category.questions.length -1){
+            if(index < category.questions.length){
                 detail += categoryQuestion(question)
             }
+            if(question.note != '' && question.note != undefined && question.score != 'y'){
+                detail += qustionNote(question.note)
+            }
         })
-        detail += categoryTotal(category.total,category.maxTotal)
-        total += category.total
-        maxTotal += category.maxTotal
-        let note = 'لا يوجد'
-        if(category.note == '' | category.note == undefined){
-            note = 'لا يوجد'
-        }else{
-            note = category.note
-        }
-        detail += categoryNote(note)
+        detail += categoryTotal(category.total)
         divs += detail
     })
-    divs += categoryTotal(total,maxTotal)
     return divs
+}
+
+const totalScore = (categoriesDetails) => {
+    let total = 0
+    let maxTotal = 0
+    categoriesDetails.forEach((category) => {
+        total += category.total
+        maxTotal += category.maxTotal
+    })
+    const score = total*100.00/maxTotal
+    return score.toFixed(2)
 }
 
 
@@ -245,7 +220,7 @@ const createHTML = (data) => {
     height:.2in'>
     <p class=MsoNormal align=center dir=RTL style='margin-bottom:0in;text-align:
     center;line-height:normal;direction:rtl;unicode-bidi:embed'><span lang=AR-JO
-    style='font-size:10.0pt;font-family:"Calibri Light",sans-serif;color:black'>&#1575;&#1604;&#1587;&#1575;&#1593;&#1577;</span></p>
+    style='font-size:10.0pt;font-family:"Calibri Light",sans-serif;color:black'>ساعة الدخول</span></p>
     </td>
     <td width=197 nowrap colspan=2 valign=bottom style='width:148.1pt;border-top:
     none;border-left:solid windowtext 1.0pt;border-bottom:solid windowtext 1.0pt;
@@ -253,6 +228,23 @@ const createHTML = (data) => {
     <p class=MsoNormal align=center dir=LTR style='margin-bottom:0in;text-align:
     center;line-height:normal'><span dir=LTR></span><span style='font-size:10.0pt;
     font-family:"Calibri Light",sans-serif;color:black'><span dir=LTR></span>${getTimeFormat(new Date(data.time))}</span></p>
+    </td>
+    <td style='height:.2in;border:none' width=0 height=24></td>
+    </tr>
+    <tr style='height:.2in'>
+    <td width=326 nowrap colspan=2 valign=bottom style='width:244.2pt;border:
+    solid windowtext 1.0pt;border-top:none;padding:0in 5.4pt 0in 5.4pt;
+    height:.2in'>
+    <p class=MsoNormal align=center dir=RTL style='margin-bottom:0in;text-align:
+    center;line-height:normal;direction:rtl;unicode-bidi:embed'><span lang=AR-JO
+    style='font-size:10.0pt;font-family:"Calibri Light",sans-serif;color:black'>ساعة الخروج</span></p>
+    </td>
+    <td width=197 nowrap colspan=2 valign=bottom style='width:148.1pt;border-top:
+    none;border-left:solid windowtext 1.0pt;border-bottom:solid windowtext 1.0pt;
+    border-right:none;padding:0in 5.4pt 0in 5.4pt;height:.2in'>
+    <p class=MsoNormal align=center dir=LTR style='margin-bottom:0in;text-align:
+    center;line-height:normal'><span dir=LTR></span><span style='font-size:10.0pt;
+    font-family:"Calibri Light",sans-serif;color:black'><span dir=LTR></span>${getTimeFormat(new Date())}</span></p>
     </td>
     <td style='height:.2in;border:none' width=0 height=24></td>
     </tr>
@@ -280,8 +272,7 @@ const createHTML = (data) => {
     height:.2in'>
     <p class=MsoNormal align=center dir=RTL style='margin-bottom:0in;text-align:
     center;line-height:normal;direction:rtl;unicode-bidi:embed'><span lang=AR-SA
-    style='font-size:10.0pt;font-family:"Calibri Light",sans-serif;color:black'>&#1593;&#1583;&#1583;
-    &#1605;&#1608;&#1592;&#1601;&#1610; &#1575;&#1604;&#1601;&#1585;&#1593;</span></p>
+    style='font-size:10.0pt;font-family:"Calibri Light",sans-serif;color:black'>اسم المدرب</span></p>
     </td>
     <td width=197 nowrap colspan=2 valign=bottom style='width:148.1pt;border-top:
     none;border-left:solid windowtext 1.0pt;border-bottom:solid windowtext 1.0pt;
@@ -289,25 +280,45 @@ const createHTML = (data) => {
     <p class=MsoNormal align=center dir=LTR style='margin-bottom:0in;text-align:
     center;line-height:normal'><span style='font-size:10.0pt;font-family:"Calibri Light",sans-serif;
     color:black'>&nbsp;<span dir=RTL></span><span lang=AR-SA dir=RTL><span
-    dir=RTL></span>${data.names.length}</span></span></p>
+    dir=RTL></span>${data.names.vistor}</span></span></p>
     </td>
     <td style='height:.2in;border:none' width=0 height=24></td>
     </tr>
-    <tr style='height:22.5pt'>
-    <td width=326 nowrap colspan=2 rowspan=2 style='width:244.2pt;border:solid windowtext 1.0pt;
-    border-top:none;padding:0in 5.4pt 0in 5.4pt;height:22.5pt'>
+    <tr style='height:.2in'>
+    <td width=326 nowrap colspan=2 valign=bottom style='width:244.2pt;border:
+    solid windowtext 1.0pt;border-top:none;padding:0in 5.4pt 0in 5.4pt;
+    height:.2in'>
     <p class=MsoNormal align=center dir=RTL style='margin-bottom:0in;text-align:
     center;line-height:normal;direction:rtl;unicode-bidi:embed'><span lang=AR-SA
-    style='font-size:10.0pt;font-family:"Calibri Light",sans-serif;color:black'>&#1571;&#1587;&#1605;&#1575;&#1569;
-    &#1605;&#1608;&#1592;&#1601;&#1610; &#1575;&#1604;&#1601;&#1585;&#1593;
-    &#1593;&#1606;&#1583; &#1575;&#1604;&#1586;&#1610;&#1575;&#1585;&#1577;</span></p>
+    style='font-size:10.0pt;font-family:"Calibri Light",sans-serif;color:black'>اسم مدير الوردية</span></p>
     </td>
-    <td width=197 nowrap colspan=2 rowspan=2 valign=bottom style='width:148.1pt;
-    border-top:none;border-left:solid windowtext 1.0pt;border-bottom:solid windowtext 1.0pt;
-    border-right:none;padding:0in 5.4pt 0in 5.4pt;height:22.5pt'>
-    ${namesDiv(data.names)}
+    <td width=197 nowrap colspan=2 valign=bottom style='width:148.1pt;border-top:
+    none;border-left:solid windowtext 1.0pt;border-bottom:solid windowtext 1.0pt;
+    border-right:none;padding:0in 5.4pt 0in 5.4pt;height:.2in'>
+    <p class=MsoNormal align=center dir=LTR style='margin-bottom:0in;text-align:
+    center;line-height:normal'><span style='font-size:10.0pt;font-family:"Calibri Light",sans-serif;
+    color:black'>&nbsp;<span dir=RTL></span><span lang=AR-SA dir=RTL><span
+    dir=RTL></span>${data.names.supervisor}</span></span></p>
     </td>
-    <td style='height:22.5pt;border:none' width=0 height=38></td>
+    <td style='height:.2in;border:none' width=0 height=24></td>
+    </tr>
+    <tr style='height:.2in'>
+    <td width=326 nowrap colspan=2 valign=bottom style='width:244.2pt;border:
+    solid windowtext 1.0pt;border-top:none;padding:0in 5.4pt 0in 5.4pt;
+    height:.2in'>
+    <p class=MsoNormal align=center dir=RTL style='margin-bottom:0in;text-align:
+    center;line-height:normal;direction:rtl;unicode-bidi:embed'><span lang=AR-SA
+    style='font-size:10.0pt;font-family:"Calibri Light",sans-serif;color:black'>العلامة</span></p>
+    </td>
+    <td width=197 nowrap colspan=2 valign=bottom style='width:148.1pt;border-top:
+    none;border-left:solid windowtext 1.0pt;border-bottom:solid windowtext 1.0pt;
+    border-right:none;padding:0in 5.4pt 0in 5.4pt;height:.2in'>
+    <p class=MsoNormal align=center dir=LTR style='margin-bottom:0in;text-align:
+    center;line-height:normal'><span style='font-size:10.0pt;font-family:"Calibri Light",sans-serif;
+    color:black'>&nbsp;<span dir=RTL></span><span lang=AR-SA dir=RTL><span
+    dir=RTL></span>${totalScore(data.allCatData)}</span></span></p>
+    </td>
+    <td style='height:.2in;border:none' width=0 height=24></td>
     </tr>
     <tr style='height:22.5pt'>
     <td style='height:22.5pt;border:none' width=0 height=38></td>
@@ -324,46 +335,21 @@ const createHTML = (data) => {
     </tr>
     ${categoriesDiv(data.allCatData)}
     <tr style='height:.2in'>
-    <td width=28 nowrap valign=bottom style='width:21.3pt;border:solid windowtext 1.0pt;
-    border-top:none;padding:0in 5.4pt 0in 5.4pt;height:.2in'>
-    <p class=MsoNormal align=right dir=LTR style='margin-bottom:0in;text-align:
-    right;line-height:normal'><span style='font-size:10.0pt;color:black'>&nbsp;</span></p>
-    </td>
-    <td width=297 nowrap style='width:222.9pt;border-top:none;border-left:solid black 1.0pt;
-    border-bottom:solid windowtext 1.0pt;border-right:none;padding:0in 5.4pt 0in 5.4pt;
+    <td width=326 nowrap colspan=2 valign=bottom style='width:244.2pt;border:
+    solid windowtext 1.0pt;border-top:none;padding:0in 5.4pt 0in 5.4pt;
     height:.2in'>
-    <p class=MsoNormal dir=RTL style='margin-bottom:0in;text-align:right;
-    line-height:normal;direction:rtl;unicode-bidi:embed'><span lang=AR-SA
-    style='font-size:10.0pt;color:black'>&#1575;&#1587;&#1605;
-    &#1608;&#1578;&#1608;&#1602;&#1610;&#1593; /
-    &#1575;&#1604;&#1578;&#1583;&#1602;&#1610;&#1602;
-    &#1575;&#1604;&#1583;&#1575;&#1582;&#1604;&#1610;</span></p>
+    <p class=MsoNormal align=center dir=RTL style='margin-bottom:0in;text-align:
+    center;line-height:normal;direction:rtl;unicode-bidi:embed'><span lang=AR-SA
+    style='font-size:10.0pt;font-family:"Calibri Light",sans-serif;color:black'>ما اكثر شي اعجبك بالفرع</span></p>
     </td>
-    <td width=197 nowrap colspan=2 rowspan=2 valign=bottom style='width:148.1pt;
-    border-top:none;border-left:solid windowtext 1.0pt;border-bottom:solid black 1.0pt;
+    <td width=197 nowrap colspan=2 valign=bottom style='width:148.1pt;border-top:
+    none;border-left:solid windowtext 1.0pt;border-bottom:solid windowtext 1.0pt;
     border-right:none;padding:0in 5.4pt 0in 5.4pt;height:.2in'>
     <p class=MsoNormal align=center dir=LTR style='margin-bottom:0in;text-align:
-    center;line-height:normal'><span style='font-size:10.0pt;color:black'>&nbsp;</span></p>
+    center;line-height:normal'><span dir=LTR></span><span style='font-size:10.0pt;
+    font-family:"Calibri Light",sans-serif;color:black'><span dir=LTR></span>&nbsp;${data.favourite == ''? 'لا يوجد' : data.favourite}</span></p>
     </td>
     <td style='height:.2in;border:none' width=0 height=24></td>
-    </tr>
-    <tr style='height:15.0pt'>
-    <td width=28 nowrap valign=bottom style='width:21.3pt;border:solid windowtext 1.0pt;
-    border-top:none;padding:0in 5.4pt 0in 5.4pt;height:15.0pt'>
-    <p class=MsoNormal align=right dir=LTR style='margin-bottom:0in;text-align:
-    right;line-height:normal'><span style='font-size:10.0pt;color:black'>&nbsp;</span></p>
-    </td>
-    <td width=297 nowrap style='width:222.9pt;border-top:none;border-left:solid black 1.0pt;
-    border-bottom:solid windowtext 1.0pt;border-right:none;padding:0in 5.4pt 0in 5.4pt;
-    height:15.0pt'>
-    <p class=MsoNormal dir=RTL style='margin-bottom:0in;text-align:right;
-    line-height:normal;direction:rtl;unicode-bidi:embed'><span lang=AR-SA
-    style='font-size:10.0pt;color:black'>&#1575;&#1587;&#1605;
-    &#1608;&#1578;&#1608;&#1602;&#1610;&#1593; /
-    &#1605;&#1587;&#1572;&#1608;&#1604; &#1575;&#1604;&#1601;&#1585;&#1593;</span></p>
-    </td>
-    <td style='height:15.0pt;border:none' width=0 height=25></td>
-    </tr>
     </table>
 
     </div>
