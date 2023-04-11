@@ -22,7 +22,7 @@ export default Item = ({item,cat,changeCatData,catTotal}) => {
         let total = catTotal
         if(score != 'y'){
             score = 'y'
-            total += 1
+            total += item.maxGrade
             const newData = {
                 score,
                 total
@@ -40,7 +40,7 @@ export default Item = ({item,cat,changeCatData,catTotal}) => {
         let total = catTotal
         if(score != 'n'){
             score = 'n'
-            total -= 1
+            total -= item.maxGrade
             const newData = {
                 score,
                 total
